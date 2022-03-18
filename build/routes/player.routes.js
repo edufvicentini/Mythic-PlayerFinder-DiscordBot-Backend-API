@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.playerRoutes = void 0;
+const express_1 = require("express");
+const CreatePlayerController_1 = require("../modules/player/useCases/createPlayer/CreatePlayerController");
+const FindPlayerController_1 = require("../modules/player/useCases/findPlayerByDiscordUser/FindPlayerController");
+const listPlayersController_1 = require("../modules/player/useCases/listPlayers/listPlayersController");
+const UpdatePlayerController_1 = require("../modules/player/useCases/updatePlayer/UpdatePlayerController");
+const playerRoutes = (0, express_1.Router)();
+exports.playerRoutes = playerRoutes;
+const createPlayerController = new CreatePlayerController_1.CreatePlayerController();
+const findPlayerController = new FindPlayerController_1.FindPlayerController();
+const updatePlayerController = new UpdatePlayerController_1.UpdatePlayerController();
+const listPlayerController = new listPlayersController_1.ListPlayersController();
+playerRoutes.post('/', createPlayerController.handle);
+playerRoutes.get('/', findPlayerController.handle);
+playerRoutes.get('/all', listPlayerController.handle);
+playerRoutes.put('/', updatePlayerController.handle);
