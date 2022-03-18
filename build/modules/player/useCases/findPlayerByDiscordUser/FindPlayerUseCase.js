@@ -29,9 +29,9 @@ let FindPlayerUseCase = class FindPlayerUseCase {
     playersRepository) {
         this.playersRepository = playersRepository;
     }
-    execute({ discord_username }) {
+    execute({ discord_userid }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const player = yield this.playersRepository.findBydiscordUsername(discord_username);
+            const player = yield this.playersRepository.findByDiscordUserID(discord_userid);
             if (!player) {
                 throw new Error('Player not found!');
             }

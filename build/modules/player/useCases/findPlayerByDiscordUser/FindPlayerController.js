@@ -15,11 +15,11 @@ const FindPlayerUseCase_1 = require("./FindPlayerUseCase");
 class FindPlayerController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { discord_username } = request.headers;
+            const { discord_userid } = request.headers;
             const findPlayerUseCase = tsyringe_1.container.resolve(FindPlayerUseCase_1.FindPlayerUseCase);
             try {
                 const player = yield findPlayerUseCase.execute({
-                    discord_username,
+                    discord_userid,
                 });
                 return response.status(201).json(player);
             }
