@@ -4,7 +4,7 @@ import { Player } from '../../models/Player';
 import { IPlayersRepository } from '../../repositories/IPlayersRepository';
 
 interface IRequest {
-    discord_username: string | string[] | undefined;
+    discord_userid: string | string[] | undefined;
 }
 
 @injectable()
@@ -15,9 +15,9 @@ class FindPlayerUseCase {
         private playersRepository: IPlayersRepository,
     ) {}
 
-    async execute({ discord_username }: IRequest): Promise<Player> {
-        const player = await this.playersRepository.findBydiscordUsername(
-            discord_username,
+    async execute({ discord_userid }: IRequest): Promise<Player> {
+        const player = await this.playersRepository.findByDiscordUserID(
+            discord_userid,
         );
 
         if (!player) {

@@ -5,13 +5,13 @@ import { FindPlayerUseCase } from './FindPlayerUseCase';
 
 class FindPlayerController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { discord_username } = request.headers;
+        const { discord_userid } = request.headers;
 
         const findPlayerUseCase = container.resolve(FindPlayerUseCase);
 
         try {
             const player = await findPlayerUseCase.execute({
-                discord_username,
+                discord_userid,
             });
             return response.status(201).json(player);
         } catch (e) {
