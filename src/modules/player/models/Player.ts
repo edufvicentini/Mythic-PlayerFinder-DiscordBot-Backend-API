@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 class Player {
     _id?: string;
     discord_username: string;
+    discord_userid: string;
     blizzard_btag: string;
     objectives: string;
     days_of_week_availability: string;

@@ -12,12 +12,14 @@ class CreatePlayerController {
             days_of_week_availability,
             times_of_day_availability,
         } = request.body;
+        const { discord_userid } = request.headers;
 
         const createPlayerUseCase = container.resolve(CreatePlayerUseCase);
 
         try {
             await createPlayerUseCase.execute({
                 discord_username,
+                discord_userid,
                 blizzard_btag,
                 objectives,
                 days_of_week_availability,

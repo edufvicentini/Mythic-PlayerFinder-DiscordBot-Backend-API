@@ -4,6 +4,7 @@ const mongoose_1 = require("mongoose");
 const playerSchema = new mongoose_1.Schema({
     _id: String,
     discord_username: String,
+    discord_userid: String,
     blizzard_btag: String,
     objectives: String,
     days_of_week_availability: String,

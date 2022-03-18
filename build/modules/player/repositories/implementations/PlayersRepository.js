@@ -16,11 +16,12 @@ exports.PlayersRepository = void 0;
 const Player_1 = require("../../models/Player");
 const Player_schema_1 = __importDefault(require("../../models/Player.schema"));
 class PlayersRepository {
-    create({ discord_username, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
+    create({ discord_username, discord_userid, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const player = new Player_1.Player();
             Object.assign(player, {
                 discord_username,
+                discord_userid,
                 blizzard_btag,
                 objectives,
                 days_of_week_availability,
@@ -35,10 +36,10 @@ class PlayersRepository {
             return all;
         });
     }
-    findBydiscordUsername(discord_username) {
+    findByDiscordUserID(discord_userid) {
         return __awaiter(this, void 0, void 0, function* () {
             const player = yield Player_schema_1.default.findOne({
-                discord_username,
+                discord_userid,
             });
             return player;
         });

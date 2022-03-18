@@ -2,6 +2,7 @@ import { Player } from '../models/Player';
 
 interface ICreatePlayerDTO {
     discord_username: string | string[] | undefined;
+    discord_userid: string | string[] | undefined;
     blizzard_btag: string;
     objectives: string;
     days_of_week_availability: string;
@@ -9,12 +10,13 @@ interface ICreatePlayerDTO {
 }
 
 interface IPlayersRepository {
-    findBydiscordUsername(
-        discord_username: string | string[] | undefined,
+    findByDiscordUserID(
+        discord_userid: string | string[] | undefined,
     ): Promise<Player | undefined>;
     list(): Promise<Player[]>;
     create({
         discord_username,
+        discord_userid,
         blizzard_btag,
         objectives,
         days_of_week_availability,

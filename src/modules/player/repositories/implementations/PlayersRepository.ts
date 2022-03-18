@@ -5,6 +5,7 @@ import { IPlayersRepository, ICreatePlayerDTO } from '../IPlayersRepository';
 class PlayersRepository implements IPlayersRepository {
     async create({
         discord_username,
+        discord_userid,
         blizzard_btag,
         objectives,
         days_of_week_availability,
@@ -14,6 +15,7 @@ class PlayersRepository implements IPlayersRepository {
 
         Object.assign(player, {
             discord_username,
+            discord_userid,
             blizzard_btag,
             objectives,
             days_of_week_availability,
@@ -29,11 +31,11 @@ class PlayersRepository implements IPlayersRepository {
         return all;
     }
 
-    async findBydiscordUsername(
-        discord_username: string | string[] | undefined,
+    async findByDiscordUserID(
+        discord_userid: string | string[] | undefined,
     ): Promise<Player | undefined> {
         const player = await PlayerModel.findOne({
-            discord_username,
+            discord_userid,
         });
 
         return player;

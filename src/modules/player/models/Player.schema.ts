@@ -3,6 +3,7 @@ import { Schema, model } from 'mongoose';
 const playerSchema = new Schema({
     _id: String,
     discord_username: String,
+    discord_userid: String,
     blizzard_btag: String,
     objectives: String,
     days_of_week_availability: String,

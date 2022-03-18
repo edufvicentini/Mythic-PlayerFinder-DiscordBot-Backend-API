@@ -4,6 +4,7 @@ import { IPlayersRepository } from '../../repositories/IPlayersRepository';
 
 interface IRequest {
     discord_username: string;
+    discord_userid: string | string[] | undefined;
     blizzard_btag: string;
     objectives: string;
     days_of_week_availability: string;
@@ -20,15 +21,14 @@ class CreatePlayerUseCase {
 
     async execute({
         discord_username,
+        discord_userid,
         blizzard_btag,
         objectives,
         days_of_week_availability,
         times_of_day_availability,
     }: IRequest): Promise<void> {
         const playerAlreadyExists =
-            await this.playersRepository.findBydiscordUsername(
-                discord_username,
-            );
+            await this.playersRepository.findByDiscordUserID(discord_username);
 
         if (playerAlreadyExists) {
             throw new Error('Player already exists!');
@@ -36,6 +36,7 @@ class CreatePlayerUseCase {
 
         await this.playersRepository.create({
             discord_username,
+            discord_userid,
             blizzard_btag,
             objectives,
             days_of_week_availability,

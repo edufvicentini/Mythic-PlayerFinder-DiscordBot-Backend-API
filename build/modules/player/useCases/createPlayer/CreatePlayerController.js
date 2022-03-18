@@ -16,10 +16,12 @@ class CreatePlayerController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const { discord_username, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, } = request.body;
+            const { discord_userid } = request.headers;
             const createPlayerUseCase = tsyringe_1.container.resolve(CreatePlayerUseCase_1.CreatePlayerUseCase);
             try {
                 yield createPlayerUseCase.execute({
                     discord_username,
+                    discord_userid,
                     blizzard_btag,
                     objectives,
                     days_of_week_availability,
