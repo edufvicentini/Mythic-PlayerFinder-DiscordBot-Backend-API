@@ -28,7 +28,7 @@ class CreatePlayerUseCase {
         times_of_day_availability,
     }: IRequest): Promise<void> {
         const playerAlreadyExists =
-            await this.playersRepository.findByDiscordUserID(discord_username);
+            await this.playersRepository.findByDiscordUserID(discord_userid);
 
         if (playerAlreadyExists) {
             throw new Error('Player already exists!');

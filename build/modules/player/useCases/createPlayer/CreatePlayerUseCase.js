@@ -31,7 +31,7 @@ let CreatePlayerUseCase = class CreatePlayerUseCase {
     }
     execute({ discord_username, discord_userid, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const playerAlreadyExists = yield this.playersRepository.findByDiscordUserID(discord_username);
+            const playerAlreadyExists = yield this.playersRepository.findByDiscordUserID(discord_userid);
             if (playerAlreadyExists) {
                 throw new Error('Player already exists!');
             }
