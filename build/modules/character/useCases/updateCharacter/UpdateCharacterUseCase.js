@@ -31,7 +31,7 @@ let UpdateCharacterUseCase = class UpdateCharacterUseCase {
     constructor(charactersRepository) {
         this.charactersRepository = charactersRepository;
     }
-    execute({ player_id, nickname, realm, main_spec, }) {
+    execute({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const characterAlreadyExists = yield this.charactersRepository.findCharacterByNameAndRealm(capitalizeFirstLetter(nickname), capitalizeFirstLetter(realm));
             if (!characterAlreadyExists)
@@ -41,6 +41,8 @@ let UpdateCharacterUseCase = class UpdateCharacterUseCase {
                 nickname,
                 realm,
                 main_spec,
+                keystone_dungeon,
+                keystone_level,
             });
         });
     }

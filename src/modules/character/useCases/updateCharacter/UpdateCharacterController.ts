@@ -5,7 +5,8 @@ import { UpdateCharacterUseCase } from './UpdateCharacterUseCase';
 
 class UpdateCharacterController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { nickname, realm, main_spec } = request.body;
+        const { nickname, realm, main_spec, keystone_dungeon, keystone_level } =
+            request.body;
         const { player_id } = request.headers;
         const updateCharacterUseCase = container.resolve(
             UpdateCharacterUseCase,
@@ -17,6 +18,8 @@ class UpdateCharacterController {
                 realm,
                 main_spec,
                 player_id,
+                keystone_dungeon,
+                keystone_level,
             });
 
             return response.status(201).json(character);

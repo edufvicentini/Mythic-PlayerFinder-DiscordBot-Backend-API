@@ -10,6 +10,8 @@ class Character {
     active_spec: string;
     gear_iLvl: number;
     covenant: string;
+    keystone_dungeon: string;
+    keystone_level: number;
     mythic_plus_score_tank_current: number;
     mythic_plus_score_dps_current: number;
     mythic_plus_score_healer_current: number;

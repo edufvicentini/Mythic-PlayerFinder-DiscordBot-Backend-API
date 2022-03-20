@@ -11,6 +11,8 @@ interface IRequest {
     nickname: string;
     realm: string;
     main_spec: string;
+    keystone_dungeon: string;
+    keystone_level: number;
 }
 
 function capitalizeFirstLetter(string: string) {
@@ -29,6 +31,8 @@ class UpdateCharacterUseCase {
         nickname,
         realm,
         main_spec,
+        keystone_dungeon,
+        keystone_level,
     }: IRequest): Promise<void> {
         const characterAlreadyExists =
             await this.charactersRepository.findCharacterByNameAndRealm(
@@ -43,6 +47,8 @@ class UpdateCharacterUseCase {
             nickname,
             realm,
             main_spec,
+            keystone_dungeon,
+            keystone_level,
         });
     }
 }

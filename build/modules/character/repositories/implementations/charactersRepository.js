@@ -68,7 +68,7 @@ class CharactersRepository {
             return character;
         });
     }
-    update({ player_id, nickname, realm, main_spec, }) {
+    update({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const character = (yield Character_schema_1.default.findOne({
                 nickname,
@@ -76,7 +76,12 @@ class CharactersRepository {
             }));
             if (character.player_id !== player_id)
                 throw new Error('This character do not belong to this player.');
-            yield Character_schema_1.default.updateOne({ player_id, nickname, realm }, { main_spec, updated_at: new Date() });
+            yield Character_schema_1.default.updateOne({ player_id, nickname, realm }, {
+                main_spec,
+                keystone_dungeon,
+                keystone_level,
+                updated_at: new Date(),
+            });
         });
     }
     getCharactersByDiscordUser(discord_username) {

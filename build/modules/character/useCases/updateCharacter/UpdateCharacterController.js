@@ -15,7 +15,7 @@ const UpdateCharacterUseCase_1 = require("./UpdateCharacterUseCase");
 class UpdateCharacterController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { nickname, realm, main_spec } = request.body;
+            const { nickname, realm, main_spec, keystone_dungeon, keystone_level } = request.body;
             const { player_id } = request.headers;
             const updateCharacterUseCase = tsyringe_1.container.resolve(UpdateCharacterUseCase_1.UpdateCharacterUseCase);
             try {
@@ -24,6 +24,8 @@ class UpdateCharacterController {
                     realm,
                     main_spec,
                     player_id,
+                    keystone_dungeon,
+                    keystone_level,
                 });
                 return response.status(201).json(character);
             }

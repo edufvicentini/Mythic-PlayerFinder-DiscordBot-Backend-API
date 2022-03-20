@@ -12,6 +12,8 @@ interface IUpdateCharacterDTO {
     nickname: string;
     realm: string;
     main_spec: string;
+    keystone_dungeon: string;
+    keystone_level: number;
 }
 
 interface ICharactersRepository {
@@ -32,6 +34,8 @@ interface ICharactersRepository {
         nickname,
         realm,
         main_spec,
+        keystone_dungeon,
+        keystone_level,
     }: IUpdateCharacterDTO): Promise<void>;
     getCharactersByDiscordUser(discord_username: string): Promise<Character[]>;
 

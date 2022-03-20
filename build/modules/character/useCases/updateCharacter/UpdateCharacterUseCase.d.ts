@@ -4,10 +4,12 @@ interface IRequest {
     nickname: string;
     realm: string;
     main_spec: string;
+    keystone_dungeon: string;
+    keystone_level: number;
 }
 declare class UpdateCharacterUseCase {
     private charactersRepository;
     constructor(charactersRepository: ICharactersRepository);
-    execute({ player_id, nickname, realm, main_spec, }: IRequest): Promise<void>;
+    execute({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }: IRequest): Promise<void>;
 }
 export { UpdateCharacterUseCase };

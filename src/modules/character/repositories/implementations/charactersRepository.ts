@@ -93,6 +93,8 @@ class CharactersRepository implements ICharactersRepository {
         nickname,
         realm,
         main_spec,
+        keystone_dungeon,
+        keystone_level,
     }: IUpdateCharacterDTO): Promise<void> {
         const character: Character = (await CharacterModel.findOne({
             nickname,
@@ -104,7 +106,12 @@ class CharactersRepository implements ICharactersRepository {
 
         await CharacterModel.updateOne(
             { player_id, nickname, realm },
-            { main_spec, updated_at: new Date() },
+            {
+                main_spec,
+                keystone_dungeon,
+                keystone_level,
+                updated_at: new Date(),
+            },
         );
     }
     async getCharactersByDiscordUser(

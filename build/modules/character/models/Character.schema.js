@@ -11,6 +11,8 @@ const characterSchema = new mongoose_1.Schema({
     active_spec: String,
     gear_iLvl: Number,
     covenant: String,
+    keystone_dungeon: String,
+    keystone_level: Number,
     mythic_plus_score_tank_current: Number,
     mythic_plus_score_dps_current: Number,
     mythic_plus_score_healer_current: Number,
