@@ -84,10 +84,10 @@ class CharactersRepository {
             });
         });
     }
-    getCharactersByDiscordUser(discord_username) {
+    getCharactersByDiscordUserID(discord_userid) {
         return __awaiter(this, void 0, void 0, function* () {
             const player = (yield Player_schema_1.default.findOne({
-                discord_username,
+                discord_userid,
             }));
             const characters = yield Character_schema_1.default.find({
                 player_id: player === null || player === void 0 ? void 0 : player._id,

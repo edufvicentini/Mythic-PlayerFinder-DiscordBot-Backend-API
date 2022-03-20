@@ -18,7 +18,7 @@ interface ICharactersRepository {
     list(): Promise<Character[]>;
     findCharacterByNameAndRealm(nickname: string, realm: string): Promise<Character | undefined>;
     update({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }: IUpdateCharacterDTO): Promise<void>;
-    getCharactersByDiscordUser(discord_username: string): Promise<Character[]>;
+    getCharactersByDiscordUserID(discord_userid: string): Promise<Character[]>;
     updateCharacterByRaiderIO(): Promise<void>;
 }
 export { ICharactersRepository, ICreateCharacterDTO, IUpdateCharacterDTO };

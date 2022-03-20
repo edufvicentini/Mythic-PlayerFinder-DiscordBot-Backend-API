@@ -15,11 +15,11 @@ const GetCharactersByDiscordUserUseCase_1 = require("./GetCharactersByDiscordUse
 class GetCharactersByDiscordUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { discord_username } = req.headers;
+            const { discord_userid } = req.headers;
             const getCharactersByDiscordUserUseCase = tsyringe_1.container.resolve(GetCharactersByDiscordUserUseCase_1.GetCharactersByDiscordUserUseCase);
             try {
                 const characters = yield getCharactersByDiscordUserUseCase.execute({
-                    discord_username,
+                    discord_userid,
                 });
                 return res.status(201).json(characters);
             }

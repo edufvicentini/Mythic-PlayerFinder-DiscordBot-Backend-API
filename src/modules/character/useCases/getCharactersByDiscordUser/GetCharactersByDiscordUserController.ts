@@ -5,14 +5,14 @@ import { GetCharactersByDiscordUserUseCase } from './GetCharactersByDiscordUserU
 
 class GetCharactersByDiscordUserController {
     async handle(req: Request, res: Response): Promise<Response> {
-        const { discord_username } = req.headers;
+        const { discord_userid } = req.headers;
 
         const getCharactersByDiscordUserUseCase = container.resolve(
             GetCharactersByDiscordUserUseCase,
         );
         try {
             const characters = await getCharactersByDiscordUserUseCase.execute({
-                discord_username,
+                discord_userid,
             });
             return res.status(201).json(characters);
         } catch (e) {

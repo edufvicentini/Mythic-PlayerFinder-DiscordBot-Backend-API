@@ -4,7 +4,7 @@ import { Character } from '../../models/Character';
 import { CharactersRepository } from '../../repositories/implementations/charactersRepository';
 
 interface IRequest {
-    discord_username: string | string[] | undefined;
+    discord_userid: string | string[] | undefined;
 }
 
 @injectable()
@@ -14,10 +14,10 @@ class GetCharactersByDiscordUserUseCase {
         private charactersRepository: CharactersRepository,
     ) {}
 
-    async execute({ discord_username }: IRequest): Promise<Character[]> {
+    async execute({ discord_userid }: IRequest): Promise<Character[]> {
         const characters =
-            await this.charactersRepository.getCharactersByDiscordUser(
-                discord_username as string,
+            await this.charactersRepository.getCharactersByDiscordUserID(
+                discord_userid as string,
             );
 
         if (characters.length === 0)

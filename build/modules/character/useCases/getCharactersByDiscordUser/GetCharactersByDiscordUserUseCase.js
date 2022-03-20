@@ -28,9 +28,9 @@ let GetCharactersByDiscordUserUseCase = class GetCharactersByDiscordUserUseCase 
     constructor(charactersRepository) {
         this.charactersRepository = charactersRepository;
     }
-    execute({ discord_username }) {
+    execute({ discord_userid }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const characters = yield this.charactersRepository.getCharactersByDiscordUser(discord_username);
+            const characters = yield this.charactersRepository.getCharactersByDiscordUserID(discord_userid);
             if (characters.length === 0)
                 throw new Error('No Characters for this User');
             return characters;

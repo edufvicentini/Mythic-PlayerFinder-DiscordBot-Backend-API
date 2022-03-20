@@ -37,7 +37,7 @@ interface ICharactersRepository {
         keystone_dungeon,
         keystone_level,
     }: IUpdateCharacterDTO): Promise<void>;
-    getCharactersByDiscordUser(discord_username: string): Promise<Character[]>;
+    getCharactersByDiscordUserID(discord_userid: string): Promise<Character[]>;
 
     updateCharacterByRaiderIO(): Promise<void>;
 

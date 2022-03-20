@@ -114,11 +114,11 @@ class CharactersRepository implements ICharactersRepository {
             },
         );
     }
-    async getCharactersByDiscordUser(
-        discord_username: string,
+    async getCharactersByDiscordUserID(
+        discord_userid: string,
     ): Promise<Character[]> {
         const player: Player = (await PlayerModel.findOne({
-            discord_username,
+            discord_userid,
         })) as Player;
 
         const characters: Character[] = await CharacterModel.find({
