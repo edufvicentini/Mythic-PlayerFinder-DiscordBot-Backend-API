@@ -88,20 +88,12 @@ class CharactersRepository implements ICharactersRepository {
         return character;
     }
     async update({
-        player_id,
         nickname,
         keystone_dungeon,
         keystone_level,
     }: IUpdateCharacterDTO): Promise<void> {
-        const character: Character = (await CharacterModel.findOne({
-            nickname,
-        })) as Character;
-
-        if (character.player_id !== player_id)
-            throw new Error('This character do not belong to this player.');
-
         await CharacterModel.updateOne(
-            { player_id, nickname },
+            { nickname },
             {
                 keystone_dungeon,
                 keystone_level,

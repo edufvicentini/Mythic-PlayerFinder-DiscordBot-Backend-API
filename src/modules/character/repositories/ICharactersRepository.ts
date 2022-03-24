@@ -8,7 +8,6 @@ interface ICreateCharacterDTO {
 }
 
 interface IUpdateCharacterDTO {
-    player_id: string | string[] | undefined;
     nickname: string;
     keystone_dungeon: string;
     keystone_level: number;
@@ -27,7 +26,6 @@ interface ICharactersRepository {
         nickname: string,
     ): Promise<Character | undefined>;
     update({
-        player_id,
         nickname,
         keystone_dungeon,
         keystone_level,

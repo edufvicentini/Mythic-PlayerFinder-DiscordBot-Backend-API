@@ -7,7 +7,6 @@ import { ICharactersRepository } from '../../repositories/ICharactersRepository'
 // Class __UseCase constructor inject character repository
 
 interface IRequest {
-    player_id: string | string[] | undefined;
     nickname: string;
     keystone_dungeon: string;
     keystone_level: number;
@@ -25,7 +24,6 @@ class UpdateCharacterUseCase {
     ) {}
 
     async execute({
-        player_id,
         nickname,
         keystone_dungeon,
         keystone_level,
@@ -38,7 +36,6 @@ class UpdateCharacterUseCase {
         if (!characterAlreadyExists) throw new Error('Character not found!');
 
         await this.charactersRepository.update({
-            player_id,
             nickname,
             keystone_dungeon,
             keystone_level,

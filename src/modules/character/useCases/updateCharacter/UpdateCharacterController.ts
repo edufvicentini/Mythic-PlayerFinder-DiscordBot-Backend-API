@@ -6,7 +6,6 @@ import { UpdateCharacterUseCase } from './UpdateCharacterUseCase';
 class UpdateCharacterController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { nickname, keystone_dungeon, keystone_level } = request.body;
-        const { player_id } = request.headers;
         const updateCharacterUseCase = container.resolve(
             UpdateCharacterUseCase,
         );
@@ -14,7 +13,6 @@ class UpdateCharacterController {
         try {
             const character = await updateCharacterUseCase.execute({
                 nickname,
-                player_id,
                 keystone_dungeon,
                 keystone_level,
             });
