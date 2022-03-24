@@ -62,22 +62,20 @@ class CharactersRepository {
             return all;
         });
     }
-    findCharacterByNameAndRealm(nickname, realm) {
+    findCharacterByNameAndRealm(nickname) {
         return __awaiter(this, void 0, void 0, function* () {
-            const character = yield Character_schema_1.default.findOne({ nickname, realm });
+            const character = yield Character_schema_1.default.findOne({ nickname });
             return character;
         });
     }
-    update({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }) {
+    update({ player_id, nickname, keystone_dungeon, keystone_level, }) {
         return __awaiter(this, void 0, void 0, function* () {
             const character = (yield Character_schema_1.default.findOne({
                 nickname,
-                realm,
             }));
             if (character.player_id !== player_id)
                 throw new Error('This character do not belong to this player.');
-            yield Character_schema_1.default.updateOne({ player_id, nickname, realm }, {
-                main_spec,
+            yield Character_schema_1.default.updateOne({ player_id, nickname }, {
                 keystone_dungeon,
                 keystone_level,
                 updated_at: new Date(),

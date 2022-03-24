@@ -10,8 +10,6 @@ interface ICreateCharacterDTO {
 interface IUpdateCharacterDTO {
     player_id: string | string[] | undefined;
     nickname: string;
-    realm: string;
-    main_spec: string;
     keystone_dungeon: string;
     keystone_level: number;
 }
@@ -27,13 +25,10 @@ interface ICharactersRepository {
 
     findCharacterByNameAndRealm(
         nickname: string,
-        realm: string,
     ): Promise<Character | undefined>;
     update({
         player_id,
         nickname,
-        realm,
-        main_spec,
         keystone_dungeon,
         keystone_level,
     }: IUpdateCharacterDTO): Promise<void>;

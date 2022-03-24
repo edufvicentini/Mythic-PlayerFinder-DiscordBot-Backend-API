@@ -82,32 +82,27 @@ class CharactersRepository implements ICharactersRepository {
 
     async findCharacterByNameAndRealm(
         nickname: string,
-        realm: string,
     ): Promise<Character | undefined> {
-        const character = await CharacterModel.findOne({ nickname, realm });
+        const character = await CharacterModel.findOne({ nickname });
 
         return character;
     }
     async update({
         player_id,
         nickname,
-        realm,
-        main_spec,
         keystone_dungeon,
         keystone_level,
     }: IUpdateCharacterDTO): Promise<void> {
         const character: Character = (await CharacterModel.findOne({
             nickname,
-            realm,
         })) as Character;
 
         if (character.player_id !== player_id)
             throw new Error('This character do not belong to this player.');
 
         await CharacterModel.updateOne(
-            { player_id, nickname, realm },
+            { player_id, nickname },
             {
-                main_spec,
                 keystone_dungeon,
                 keystone_level,
                 updated_at: new Date(),

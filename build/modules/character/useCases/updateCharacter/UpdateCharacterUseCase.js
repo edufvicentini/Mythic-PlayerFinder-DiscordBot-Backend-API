@@ -31,16 +31,14 @@ let UpdateCharacterUseCase = class UpdateCharacterUseCase {
     constructor(charactersRepository) {
         this.charactersRepository = charactersRepository;
     }
-    execute({ player_id, nickname, realm, main_spec, keystone_dungeon, keystone_level, }) {
+    execute({ player_id, nickname, keystone_dungeon, keystone_level, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const characterAlreadyExists = yield this.charactersRepository.findCharacterByNameAndRealm(capitalizeFirstLetter(nickname), capitalizeFirstLetter(realm));
+            const characterAlreadyExists = yield this.charactersRepository.findCharacterByNameAndRealm(capitalizeFirstLetter(nickname));
             if (!characterAlreadyExists)
                 throw new Error('Character not found!');
             yield this.charactersRepository.update({
                 player_id,
                 nickname,
-                realm,
-                main_spec,
                 keystone_dungeon,
                 keystone_level,
             });
