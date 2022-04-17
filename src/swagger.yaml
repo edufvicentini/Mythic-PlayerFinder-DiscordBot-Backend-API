@@ -6,6 +6,8 @@ info:
 paths:
     /players/all:
         get:
+            tags:
+                -   Player
             summary: Returns a list of players.
             description: Returns all players registered on the database.
             responses:
@@ -27,10 +29,74 @@ paths:
                                     days_of_week_availability:
                                         type: string
                                     times_of_day_availability:
-                                example:
-                                    discord_username: Player 1
-                                    discord_userid: 1234512345123
-                                    blizzard_btag: Player1#1234
-                                    objectives: Achieve the KSM before next month.
-                                    days_of_week_availability: Weekend - Friday, Saturday and Sunday
-                                    times_of_day_availability: 14:00 - 23:00
+                                        type: string
+    /players:
+        post:
+            tags:
+                -   Player
+            summary: Register a new Player
+            description: Register a new player in the database
+            requestBody:
+                description: Required fields to Register a new Player
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                discord_username:
+                                    type: string
+                                discord_userid:
+                                    type: string
+                                blizzard_btag:
+                                    type: string
+                                objectives:
+                                    type: string
+                                days_of_week_availability:
+                                    type: string
+                                times_of_day_availability:
+                                    type: string
+                            example:
+                                discord_username: Player 1
+                                discord_userid: 1234512345123
+                                blizzard_btag: Player1#1234
+                                objectives: Achieve the KSM before next month.
+                                days_of_week_availability: Weekend - Friday, Saturday and Sunday
+                                times_of_day_availability: 14:00 - 23:00
+            responses:
+                201:
+                    description: Player Registered
+                500:
+                    description: Internal server error
+        get:
+            tags:
+                -   Player
+            summary: Retrieve informations of one player.
+            description: Returns a player registered on the database.
+            parameters:
+                -   in: header
+                    name: discord_userid
+                    schema:
+                        type: string
+                    required: true
+            responses:
+                200:
+                    description: A object containing information of one player
+                    content: 
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    discord_username:
+                                        type: string
+                                    discord_userid:
+                                        type: string
+                                    blizzard_btag:
+                                        type: string
+                                    objectives:
+                                        type: string
+                                    days_of_week_availability:
+                                        type: string
+                                    times_of_day_availability:
+                                        type: string
+                500:
+                    description: Player not found
