@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+    title: Mythic-Dungeon-Management-API
+    description: This is a API for a web application built for group management in World of Warcraft.
+    version: 0.1.0
+paths:
+    /players/all:
+        get:
+            summary: Returns a list of players.
+            description: Returns all players registered on the database.
+            responses:
+                200:
+                    description: A Json array of Players
+                    content: 
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    discord_username:
+                                        type: string
+                                    discord_userid:
+                                        type: string
+                                    blizzard_btag:
+                                        type: string
+                                    objectives:
+                                        type: string
+                                    days_of_week_availability:
+                                        type: string
+                                    times_of_day_availability:
+                                example:
+                                    discord_username: Player 1
+                                    discord_userid: 1234512345123
+                                    blizzard_btag: Player1#1234
+                                    objectives: Achieve the KSM before next month.
+                                    days_of_week_availability: Weekend - Friday, Saturday and Sunday
+                                    times_of_day_availability: 14:00 - 23:00
