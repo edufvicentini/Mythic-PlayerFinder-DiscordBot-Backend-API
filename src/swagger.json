@@ -1,35 +1,51 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "RentalX Documentation",
-        "description": "This is an API Rent",
+        "title": "Mythic-Dungeon-Management-API",
+        "description": "This is a API for a web application built for group management in World of Warcraft.",
         "version": "1.0.0",
         "contact": {
             "email": "eduardofvicentini@gmail.com"
         }
     },
     "paths": {
-        "/categories": {
+        "/players": {
             "post": {
-                "tags": ["Category"],
-                "summary": "Create a category",
-                "description": "Create a new category",
+                "tags": ["Player"],
+                "summary": "Create a Player",
+                "description": "Create a new Player",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "name": {
+                                    "discord_username": {
                                         "type": "string"
                                     },
-                                    "description": {
+                                    "discord_userid": {
+                                        "type": "string"
+                                    },
+                                    "blizzard_btag": {
+                                        "type": "string"
+                                    },
+                                    "objectives": {
+                                        "type": "string"
+                                    },
+                                    "days_of_week_availability": {
+                                        "type": "string"
+                                    },
+                                    "times_of_day_availability": {
                                         "type": "string"
                                     }
                                 },
                                 "example": {
-                                    "name": "Category name Sample",
-                                    "description": "Category description Sample"
+                                    "discord_username": "Player 1",
+                                    "discord_userid": "1234512345123",
+                                    "blizzard_btag": "Player1#1234",
+                                    "objectives": "Achieve the KSM before next month.",
+                                    "days_of_week_availability": "Weekend: Friday, Saturday and Sunday",
+                                    "times_of_day_availability": "14:00 - 23:00"
                                 }
                             }
                         }
@@ -40,16 +56,24 @@
                         "description": "Created"
                     },
                     "500": {
-                        "description": "Category already exists!"
+                        "description": "Player already exists!"
                     }
                 }
             },
             "get": {
-                "tags": ["Category"],
-                "summary": "List all categories",
-                "description": "List all categories",
+                "tags": ["Player"],
+                "summary": "List player by ID",
+                "description": "List all Players created in the Database",
+                "parameters": {
+                    "name":"true",
+                    "in":"header",
+                    "required":"null",
+                    "schema": {
+                        "type":"string"
+                    }
+                },
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "Success",
                         "content": {
                             "application/json": {
@@ -58,11 +82,29 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "name": {
+                                            "_id": {
                                                 "type": "string"
                                             },
-                                            "description": {
+                                            "discord_username": {
                                                 "type": "string"
+                                            },
+                                            "discord_userid": {
+                                                "type": "string"
+                                            },
+                                            "blizzard_btag": {
+                                                "type": "string"
+                                            },
+                                            "objectives": {
+                                                "type": "string"
+                                            },
+                                            "days_of_week_availability": {
+                                                "type": "string"
+                                            },
+                                            "times_of_day_availability": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "date"
                                             }
                                         }
                                     }
@@ -71,31 +113,52 @@
                         }
                     }
                 }
-            }
+            }    
         },
-        "/categories/import": {
-            "post":{
-                "tags": ["Category"],
-                "summary": "Upload a new category",
-                "description": "Upload a new category",
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data":  {
-                            "schema":  {
-                                "type": "object",
-                                "properties": {
-                                    "file": {
-                                        "type": "string",
-                                        "format": "binary"
+        "/players/all": {
+            "get": {
+                "tags": ["Player"],
+                "summary": "List all Players",
+                "description": "List all Players created in the Database",
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "_id": {
+                                                "type": "string"
+                                            },
+                                            "discord_username": {
+                                                "type": "string"
+                                            },
+                                            "discord_userid": {
+                                                "type": "string"
+                                            },
+                                            "blizzard_btag": {
+                                                "type": "string"
+                                            },
+                                            "objectives": {
+                                                "type": "string"
+                                            },
+                                            "days_of_week_availability": {
+                                                "type": "string"
+                                            },
+                                            "times_of_day_availability": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "date"
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
                     }
                 }
             }    

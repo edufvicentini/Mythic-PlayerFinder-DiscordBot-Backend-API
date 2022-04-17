@@ -11,8 +11,8 @@ class CreatePlayerController {
             objectives,
             days_of_week_availability,
             times_of_day_availability,
+            discord_userid,
         } = request.body;
-        const { discord_userid } = request.headers;
 
         const createPlayerUseCase = container.resolve(CreatePlayerUseCase);
 
