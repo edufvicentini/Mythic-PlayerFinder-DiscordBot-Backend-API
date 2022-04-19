@@ -21,7 +21,7 @@ class FindPlayerController {
                 const player = yield findPlayerUseCase.execute({
                     discord_userid,
                 });
-                return response.status(201).json(player);
+                return response.status(200).json(player);
             }
             catch (e) {
                 return response.status(500).json({ message: e.message });

@@ -44,9 +44,9 @@ class PlayersRepository {
             return player;
         });
     }
-    updatePlayerInfo({ discord_username, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
+    updatePlayerInfo({ discord_userid, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield Player_schema_1.default.findOneAndUpdate({ discord_username }, {
+            yield Player_schema_1.default.findOneAndUpdate({ discord_userid }, {
                 blizzard_btag,
                 objectives,
                 days_of_week_availability,

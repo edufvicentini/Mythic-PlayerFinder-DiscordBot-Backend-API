@@ -15,12 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 require("reflect-metadata");
+const path_1 = __importDefault(require("path"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const yamljs_1 = __importDefault(require("yamljs"));
 const database_1 = require("./database");
 require("./shared/container");
 const UpdateByRaiderIOController_1 = require("./modules/character/useCases/updateCharacterByRaiderIO/UpdateByRaiderIOController");
 const routes_1 = require("./routes");
-const swagger_json_1 = __importDefault(require("./swagger.json"));
+const swaggerFile = yamljs_1.default.load(path_1.default.resolve(__dirname, 'swagger.yaml'));
 const app = (0, express_1.default)();
 const updateByRaiderIO = new UpdateByRaiderIOController_1.UpdateByRaiderIOController();
 app.use(express_1.default.json());
@@ -29,7 +31,9 @@ function connect() {
     return __awaiter(this, void 0, void 0, function* () {
         (0, database_1.MongoDBConnect)();
         updateByRaiderIO.handle();
-        app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
+        app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerFile, {
+            customCss: '.swagger-ui .topbar { display: none}',
+        }));
         app.use(routes_1.router);
         app.listen(process.env.PORT || 3333);
     });

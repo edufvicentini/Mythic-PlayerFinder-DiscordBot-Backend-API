@@ -28,15 +28,15 @@ let UpdatePlayerUseCase = class UpdatePlayerUseCase {
     constructor(playersRepository) {
         this.playersRepository = playersRepository;
     }
-    execute({ discord_username, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
+    execute({ discord_userid, blizzard_btag, objectives, days_of_week_availability, times_of_day_availability, }) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (discord_username === undefined)
-                throw new Error('No username defined');
-            const player = yield this.playersRepository.findBydiscordUsername(discord_username);
+            if (discord_userid === undefined)
+                throw new Error('No user ID defined');
+            const player = yield this.playersRepository.findByDiscordUserID(discord_userid);
             if (!player)
                 throw new Error('Player not Found!');
             yield this.playersRepository.updatePlayerInfo({
-                discord_username,
+                discord_userid,
                 blizzard_btag,
                 objectives,
                 days_of_week_availability,
