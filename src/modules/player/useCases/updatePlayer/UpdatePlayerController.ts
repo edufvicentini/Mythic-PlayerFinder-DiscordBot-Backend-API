@@ -14,13 +14,13 @@ class UpdatePlayerController {
             times_of_day_availability,
         } = request.body;
 
-        const { discord_username } = request.headers;
+        const { discord_userid } = request.headers;
 
         const updatePlayerUseCase = container.resolve(UpdatePlayerUseCase);
 
         try {
             await updatePlayerUseCase.execute({
-                discord_username,
+                discord_userid,
                 blizzard_btag,
                 objectives,
                 days_of_week_availability,

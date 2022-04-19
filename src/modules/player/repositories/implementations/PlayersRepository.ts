@@ -1,6 +1,10 @@
 import { Player } from '../../models/Player';
 import PlayerModel from '../../models/Player.schema';
-import { IPlayersRepository, ICreatePlayerDTO } from '../IPlayersRepository';
+import {
+    IPlayersRepository,
+    ICreatePlayerDTO,
+    IUpdatePlayerDTO,
+} from '../IPlayersRepository';
 
 class PlayersRepository implements IPlayersRepository {
     async create({
@@ -42,14 +46,14 @@ class PlayersRepository implements IPlayersRepository {
     }
 
     async updatePlayerInfo({
-        discord_username,
+        discord_userid,
         blizzard_btag,
         objectives,
         days_of_week_availability,
         times_of_day_availability,
-    }: ICreatePlayerDTO): Promise<void> {
+    }: IUpdatePlayerDTO): Promise<void> {
         await PlayerModel.findOneAndUpdate(
-            { discord_username },
+            { discord_userid },
             {
                 blizzard_btag,
                 objectives,

@@ -100,3 +100,205 @@ paths:
                                         type: string
                 500:
                     description: Player not found
+        put:
+            tags:
+                -   Player
+            summary: Update a existing player information
+            description: Update a registered player in the database
+            parameters:
+                -   in: header
+                    name: discord_userid
+                    schema:
+                        type: string
+                    required: true
+                    default: 1234512345123
+            requestBody:
+                description: Required fields to Update a existing Player
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                blizzard_btag:
+                                    type: string
+                                objectives:
+                                    type: string
+                                days_of_week_availability:
+                                    type: string
+                                times_of_day_availability:
+                                    type: string
+                            example:
+                                blizzard_btag: Player1#1234
+                                objectives: Achieve the KSM before next month.
+                                days_of_week_availability: Weekend - Friday, Saturday and Sunday
+                                times_of_day_availability: 14:00 - 23:00
+            responses:
+                201:
+                    description: Player updated
+                500:
+                    description: Player not found
+    /characters:
+        get:
+            tags:
+                -   Character
+            summary: Returns a list of all characters registered.
+            description: Returns all characters registered on the database.
+            responses:
+                200:
+                    description: A Json array of Characters
+                    content: 
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    _id:
+                                        type: string
+                                    player_id:
+                                        type: string
+                                    nickname:
+                                        type: string
+                                    realm:
+                                        type: string
+                                    class:
+                                        type: string
+                                    main_spec:
+                                        type: string
+                                    active_spec:
+                                        type: string
+                                    gear_ilvl:
+                                        type: string
+                                    covenant:
+                                        type: string
+                                    keystone_dungeon:
+                                        type: string
+                                    keystone_level:
+                                        type: string
+                                    mythic_plus_score_tank_current:
+                                        type: string
+                                    mythic_plus_score_dps_current:
+                                        type: string
+                                    mythic_plus_score_healer_current:
+                                        type: string
+                                    raiderio_profile_link:
+                                        type: string
+                                    created_at:
+                                        type: Date
+                                    updated_at:
+                                        type: Date
+        post:
+            tags:
+                -   Character
+            summary: Register a new Character
+            description: Register a new character in the database
+            parameters:
+                -   in: header
+                    name: player_id
+                    schema:
+                        type: string
+                    required: true
+                    default: 36d9c0df-b91e-4da6-9218-e1a101db89f7431434
+            requestBody:
+                description: Required fields to Register a new Character. Only registers existing characters, otherwise will fail.
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                nickname:
+                                    type: string
+                                realm:
+                                    type: string
+                                main_spec:
+                                    type: string
+                            example:
+                                nickname: deathdruid
+                                realm: azralon
+                                main_spec: balance
+            responses:
+                201:
+                    description: Character registered successfully
+                500:
+                    description: Character not found in server
+        put:
+            tags:
+                -   Character
+            summary: Update a existing character information
+            description: Update a registered character in the database
+            requestBody:
+                description: Required fields to Update a existing Character
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                nickname:
+                                    type: string
+                                keystone_dungeon:
+                                    type: string
+                                keystone_level:
+                                    type: number
+                            example:
+                                nickname: Deathdruid
+                                keystone_dungeon: Halls of Attonement
+                                keystone_level: 20
+            responses:
+                201:
+                    description: Character updated
+                500:
+                    description: Character not found
+    /characters/discord-user:    
+        get:
+            tags:
+                -   Character
+            summary: Retrieve all characters of one player.
+            description: Returns all characters of the informed player registered on the database.
+            parameters:
+                -   in: header
+                    name: discord_userid
+                    schema:
+                        type: string
+                    required: true
+            responses:
+                200:
+                    description: A Json array of Characters
+                    content: 
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    _id:
+                                        type: string
+                                    player_id:
+                                        type: string
+                                    nickname:
+                                        type: string
+                                    realm:
+                                        type: string
+                                    class:
+                                        type: string
+                                    main_spec:
+                                        type: string
+                                    active_spec:
+                                        type: string
+                                    gear_ilvl:
+                                        type: string
+                                    covenant:
+                                        type: string
+                                    keystone_dungeon:
+                                        type: string
+                                    keystone_level:
+                                        type: string
+                                    mythic_plus_score_tank_current:
+                                        type: string
+                                    mythic_plus_score_dps_current:
+                                        type: string
+                                    mythic_plus_score_healer_current:
+                                        type: string
+                                    raiderio_profile_link:
+                                        type: string
+                                    created_at:
+                                        type: Date
+                                    updated_at:
+                                        type: Date
+                500:
+                    description: Player not found
