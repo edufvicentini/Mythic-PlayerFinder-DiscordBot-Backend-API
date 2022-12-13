@@ -38,6 +38,8 @@ Module
     ├── createEntity                # Functionality for creation, result of POST method.
         ├── createEntityController.ts   # Receives Request, executes the useCase and return Response.
         └── createEntityUseCase.ts      # Main logic behind each functionality, like manipulating and validating data.
+    ├── listEntity                  # Each function has its own set.
+    ├── ... etc
 ```
 
 ## Author
