@@ -1,5 +1,9 @@
 # Mythic-PlayerFinder-DiscordBot-API
 
+<a href="https://github.com/edufvicentini/Mythic-PlayerFinder-DiscordBot-Backend-API/blob/master/license">
+   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Mythic-PlayerFinder-API is released under the MIT license." />
+ </a>
+
 ## 💻 About the project
 
 This is an API for a discord Bot made for a World of Warcraft guild.
