@@ -50,7 +50,7 @@ Module
 ```
 
 ## ⚙️ Routes List
-<a href="https://raw.githubusercontent.com/edufvicentini/Mythic-PlayerFinder-DiscordBot-Backend-API/master/assets/Mythic-PlayerFinder-insomnia">
+<a href="https://raw.githubusercontent.com/edufvicentini/Mythic-PlayerFinder-DiscordBot-Backend-API/master/assets/Mythic-PlayerFinder-insomnia.json">
    <img src="https://img.shields.io/badge/GET-INSOMNIA%20FILE-purple" />
  </a>
 
