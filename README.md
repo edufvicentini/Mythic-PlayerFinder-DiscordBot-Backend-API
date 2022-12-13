@@ -97,7 +97,7 @@ $ npm run dev
 
 #### 🎲 Environment Variables
 ```bash
-    DB_URI      # MongoDB Connection URI
+DB_URI      # MongoDB Connection URI
 ```
 
 
