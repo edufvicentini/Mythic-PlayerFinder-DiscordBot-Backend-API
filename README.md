@@ -95,6 +95,12 @@ $ npm run dev
 # The server will start in port:3333 - http://localhost:3333
 ```
 
+#### 🎲 Environment Variables
+```bash
+    DB_URI      # MongoDB Connection URI
+```
+
+
 ---
 
 ### 🛠 Technologies
